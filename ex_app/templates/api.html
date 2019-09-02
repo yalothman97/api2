@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Test
+{% endblock title %}
+
+{% block content %}
+
+	<div class="container">
+	<div class="row">
+		{% for response in responses %}
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<h2 class="card-title" >type: {{response.type}}</h2>
+					<h2 class="card-title" > actor display: {{response.actor.display_login}}</h2>
+					<img src="{{response.actor.avatar_url}}"> 
+					<h2 class="card-title" >repo name: {{response.repo.name}}</h2>
+
+
+					
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	</div>
+
+
+{% if response.next%}
+        <form action="{% url 'test-api' %}">
+        <input type="hidden" value="{{response.next}}" name="n">
+        <button class='btn btn-primary' type='submit'>Next</button>
+        </form>
+{% endif %}
+
+
+ {% if response.previous %}
+          <form action="{% url 'test-api' %}">
+          <input type="hidden" value="{{response.previous}}" name="p">
+          <button class='btn btn-primary' type='submit'>Previous</button>
+          </form>
+{% endif %}
+
+
+
+{% endblock content %}

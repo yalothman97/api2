@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Detail
+{% endblock title %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<h1 class="card-title">{{response.species.name.title}}</h1>
+					<p>Height: {{r.height}}</p>
+					<p>Abilities:</p>
+					<ul>
+						{%for ability in response.abilities %}
+						<li>{{ability.ability.name}}</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}

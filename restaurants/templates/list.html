@@ -1,20 +1,36 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>List</title>
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block title %}
+
+{% endblock title %}
+
+{% block content %}
+    
+        <div class="card" style="width: 18rem;">
         {% for restaurant in restaurants %}
-            <a href="{% url 'restaurant-detail' restaurant.id %}">
-                <ul>
-                    <li>{{restaurant.name}}</li>
-                    <li>{{restaurant.description}}</li>
-                    <li>{{restaurant.opening_time}}</li>
-                    <li>{{restaurant.closing_time}}</li>
-                    <li><a href="{% url 'restaurant-delete' restaurant_id=restaurant.id %}">Delete</a></li>
-                </ul>
-            </a>
+          <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{restaurant.name}}</h5>
+            <p class="card-text">{{restaurant.description}}</p>
+            <a href="{% url 'restaurant-detail' restaurant.id %}" class="btn btn-primary">Go somewhere</a>
+          </div>
         {% endfor %}
-    </body>
-</html>
+        </div>
+    
+
+        {% for restaurant in restaurants %}
+            <a href="">
+                
+                <h1>{{restaurant.name}}</h1>  </a>
+                 <h2>{{restaurant.description}}</h2>
+                    <ul>
+                        <li>{{restaurant.opening_time}}</li>
+                        <li>{{restaurant.closing_time}}</li>
+                        <li><a href="{% url 'restaurant-delete' restaurant_id=restaurant.id %}">Delete</a></li>
+                     </ul>
+           
+        {% endfor %}
+
+
+    
+{% endblock content %}

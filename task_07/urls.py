@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from restaurants import views
+from django.conf import settings
+from django.conf.urls.static import static
+from ex_app.views import test_api, api_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +29,8 @@ urlpatterns = [
     path('restaurants/create/',views.restaurant_create ,name='restaurant-create'),
     path('restaurants/update/<int:restaurant_id>/',views.restaurant_update ,name='restaurant-update'),
     path('restaurants/delete/<int:restaurant_id>/',views.restaurant_delete ,name='restaurant-delete'),
+    path('test/', test_api, name='test-api'),
+    path('detail/', api_detail, name='api-detail')
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
